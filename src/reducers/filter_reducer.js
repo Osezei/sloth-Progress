@@ -24,6 +24,7 @@ const filter_reducer = (state, action) => {
       },
     };
   }
+  //this
   //}
   if (action.type === SET_GRIDVIEW) {
     return { ...state, grid_view: true };
@@ -37,6 +38,7 @@ const filter_reducer = (state, action) => {
   }
   if (action.type === SORT_PRODUCTS) {
     const { sort, filtered_products } = state;
+
     let tempProducts = [...filtered_products];
     if (sort === "price-lowest") {
       tempProducts = tempProducts.sort((a, b) => a.price - b.price);
@@ -58,7 +60,7 @@ const filter_reducer = (state, action) => {
   }
   if (action.type === UPDATE_FILTERS) {
     const { name, value } = action.payload;
-    return { ...state, filters: { ...state.fiters, [name]: value } };
+    return { ...state, filters: { ...state.filters, [name]: value } };
   }
   if (action.type === FILTER_PRODUCTS) {
     const { all_products } = state;
@@ -66,7 +68,7 @@ const filter_reducer = (state, action) => {
 
     let tempProducts = [...all_products];
 
-    // console.log("jonh");
+    //console.log("jonh");
     //filtering
     //text
     if (text) {
@@ -81,12 +83,12 @@ const filter_reducer = (state, action) => {
       );
     }
 
-    //company
-    // if (company !== "all") {
-    //   tempProducts = tempProducts.filter(
-    //     (product) => product.company === company
-    //   );
-    // }
+    // //company
+    if (company !== "all") {
+      tempProducts = tempProducts.filter(
+        (product) => product.company === company
+      );
+    }
 
     //
 

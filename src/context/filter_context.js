@@ -18,7 +18,7 @@ const initialState = {
   grid_view: true,
   sort: "price-lowest",
   filters: {
-    text: " ",
+    text: "",
     company: "all",
     category: "all",
     color: "all",
@@ -53,13 +53,15 @@ export const FilterProvider = ({ children }) => {
   };
 
   const updateSort = (e) => {
-    //const name = e.target.name;
+    const name = e.target.name;
     const value = e.target.value;
     dispatch({ type: UPDATE_SORT, payload: value });
   };
   const updateFilters = (e) => {
     let name = e.target.name;
+
     let value = e.target.value;
+
     if (name === "category") {
       value = e.target.textContent;
     }
