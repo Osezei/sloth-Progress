@@ -71,11 +71,11 @@ const filter_reducer = (state, action) => {
     //console.log("jonh");
     //filtering
     //text
-    if (text) {
-      tempProducts = tempProducts.filter((product) => {
-        return product.name.toLowerCase().startsWith(text);
-      });
-    }
+    // if (text) {
+    //   tempProducts = tempProducts.filter((product) => {
+    //     return product.name.toLowerCase().startsWith(text);
+    //   });
+    // }
     //category
     if (category !== "all") {
       tempProducts = tempProducts.filter(
@@ -89,8 +89,21 @@ const filter_reducer = (state, action) => {
         (product) => product.company === company
       );
     }
+    //colors
+    if (color !== "all") {
+      tempProducts = tempProducts.filter((product) => {
+        return product.colors.find((c) => c === color);
+      });
+    }
+    //price
+    tempProducts = tempProducts.filter((product) => product.price <= price);
 
-    //
+    //shippping
+    if (shipping) {
+      tempProducts = tempProducts.filter(
+        (product) => product.shipping === true
+      );
+    }
 
     return { ...state, filtered_products: tempProducts };
   }
